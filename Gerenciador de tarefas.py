@@ -5,7 +5,7 @@ def adicionar_tarefa():
     nova_tarefa = {"nome": descricao, 
                    "status": False}
     tarefas.append(nova_tarefa)
-    print(f"Tarefa adicianada: {descricao} ")
+    print(f"Tarefa adicionada: {descricao} ")
 
 def ver_tarefas():
     print("Sua lista de tarefas: ")
@@ -46,3 +46,4 @@ def remover_tarefa():
             break
     except ValueError:
         print("Digite um número válido! (Não digite letra!)")
+
