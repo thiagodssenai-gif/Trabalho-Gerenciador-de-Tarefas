@@ -1,10 +1,13 @@
+# GERENCIADOR DE TAREFAS 2
+
 tarefas = []
 
 def adicionar_tarefa():
     descricao = input("Digite a nova tarefa: ")
     nova_tarefa = {"nome": descricao, 
-                   "status": False}
+    "status": False}
     tarefas.append(nova_tarefa)
+    print(f"Tarefa adicionada: {descricao} ")
     print(f"Tarefa adicionada: {descricao} ")
 
 def ver_tarefas():
@@ -16,12 +19,15 @@ def ver_tarefas():
         print(f"{i}. {tarefas}") 
 
 def concluir_tarefa():
-    concluir = int (input ("digite qual tarefa deseja concluir"))
-    if tarefas[concluir - 1] ['status'] = True:
-        print("tarefa concluida")
+
+    ver_tarefas()
+
+    concluir = int (input ("Digite qual tarefa deseja concluir: "))
+    tarefas[concluir - 1] ['status'] = True
+    print("Tarefa concluida!")
 
 def remover_tarefa():
-
+ 
  while True:
     print("\n####################")
     print("\n[1] Adicionar tarefa")
@@ -46,4 +52,3 @@ def remover_tarefa():
             break
     except ValueError:
         print("Digite um número válido! (Não digite letra!)")
-
