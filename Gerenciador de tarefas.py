@@ -4,31 +4,55 @@ tarefas = []
 
 def adicionar_tarefa():
     descricao = input("Digite a nova tarefa: ")
+    
     nova_tarefa = {"nome": descricao, 
     "status": False}
+    
     tarefas.append(nova_tarefa)
-    print(f"Tarefa adicionada: {descricao} ")
-    print(f"Tarefa adicionada: {descricao} ")
+    print(f"=========== Tarefa adicionada: {descricao} ===========")
 
 def ver_tarefas():
-    print("Sua lista de tarefas: ")
+    
+    print("\nSua lista de tarefas: ")
+
     if len(tarefas) == 0:
-        print("Nenhuma tarefa cadastrada!")
+        print("=========== Nenhuma tarefa cadastrada! ===========")
         return
-    for i, tarefa in enumerate(tarefas, start=1):
-        print(f"{i}. {tarefas}") 
+    
+    for i, tarefa in enumerate(tarefas):
+        
+        if tarefa['status']:
+            status = '✅'
+        else:
+            status = '❌'
+        print(f"{i+1}. {tarefa['nome']} [{status}]")
 
 def concluir_tarefa():
 
     ver_tarefas()
+    try:
+        concluir = int (input ("Digite qual tarefa deseja concluir: "))
+    
+        tarefas[concluir - 1] ['status'] = True
+        print("=========== Tarefa concluida! ===========")
 
-    concluir = int (input ("Digite qual tarefa deseja concluir: "))
-    tarefas[concluir - 1] ['status'] = True
-    print("Tarefa concluida!")
+    except (ValueError, IndexError):
+        print("Digite um número válido!")
 
 def remover_tarefa():
  
- while True:
+ ver_tarefas()
+ try:
+    numero = int(input("Qual tarefa deseja remover? "))
+ 
+    tarefa_removida = tarefas.pop(numero - 1)
+    print(f"Tarefa '{tarefa_removida['nome']}' removida.")
+ 
+ except (ValueError, IndexError):
+    print("Digite um número válido!")
+
+ 
+while True:
     print("\n####################")
     print("\n[1] Adicionar tarefa")
     print("\n[2] Ver tarefa")
@@ -41,9 +65,9 @@ def remover_tarefa():
         opcao = int(input("Escolha uma opção!: "))
 
         if opcao == 1:
-            adicionar_tarefa() #DEFINIR "REMOVER_TAREFA" COMO FUNÇÃO
+             adicionar_tarefa() #DEFINIR "REMOVER_TAREFA" COMO FUNÇÃO
         elif opcao == 2:
-            ver_tarefas() #DEFINIR "REMOVER_TAREFA" COMO FUNÇÃO
+             ver_tarefas() #DEFINIR "REMOVER_TAREFA" COMO FUNÇÃO
         elif opcao == 3:
             concluir_tarefa() #DEFINIR "REMOVER_TAREFA" COMO FUNÇÃO
         elif opcao == 4:
@@ -51,4 +75,4 @@ def remover_tarefa():
         elif opcao == 5:
             break
     except ValueError:
-        print("Digite um número válido! (Não digite letra!)")
+         print("Digite um número válido! (Não digite letra!)")
