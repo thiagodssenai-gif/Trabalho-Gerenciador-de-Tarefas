@@ -9,11 +9,12 @@ def adicionar_tarefa():
     "status": False}
     
     tarefas.append(nova_tarefa)
-    print(f"=========== Tarefa adicionada: {descricao} ===========")
+    print("\n=========== Tarefa adicionada! ===========")
+    print("->", descricao)
 
 def ver_tarefas():
     
-    print("\nSua lista de tarefas: ")
+    print("\n=========== Sua lista de tarefas ===========")
 
     if len(tarefas) == 0:
         print("=========== Nenhuma tarefa cadastrada! ===========")
@@ -42,15 +43,16 @@ def concluir_tarefa():
 def remover_tarefa():
  
  ver_tarefas()
+
  try:
-    numero = int(input("Qual tarefa deseja remover? "))
+    numero = int(input("Qual tarefa deseja remover?: "))
  
     tarefa_removida = tarefas.pop(numero - 1)
     print(f"Tarefa '{tarefa_removida['nome']}' removida.")
  
  except (ValueError, IndexError):
     print("Digite um número válido!")
-
+ 
  
 while True:
     print("\n####################")
@@ -73,6 +75,7 @@ while True:
         elif opcao == 4:
             remover_tarefa() #DEFINIR "REMOVER_TAREFA" COMO FUNÇÃO
         elif opcao == 5:
+            print("=========== SAINDO DO PROGRAMA.... ===========")
             break
     except ValueError:
          print("Digite um número válido! (Não digite letra!)")
